@@ -59,3 +59,23 @@ const construirSecuencia = (base, tope) => {
 
     return serie;
 };
+
+const generarFibonacciSet = (desde, hasta) => {
+    let a = desde;
+    let b = desde + 1;
+
+    conjuntoFib.add(a);
+    conjuntoFib.add(b);
+
+    while (true) {
+        let siguiente = a + b;
+        if (siguiente > hasta) break;
+        conjuntoFib.add(siguiente);
+        a = b;
+        b = siguiente;
+    }
+
+    return conjuntoFib;
+};
+
+console.log(generarFibonacciSet(inicio, limite));
