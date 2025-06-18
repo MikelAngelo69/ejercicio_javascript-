@@ -2,7 +2,6 @@ let inicio = 0;
 let limite = 42;
 
 let secuenciaMap = new Map();
-let conjuntoFib = new Set();
 
 const generarMapaFibonacci = (desde, hasta) => {
     let primer = desde;
@@ -60,22 +59,22 @@ const construirSecuencia = (base, tope) => {
     return serie;
 };
 
-const generarFibonacciSet = (desde, hasta) => {
-    let a = desde;
-    let b = desde + 1;
+console.log(construirSecuencia(inicio, limite));
 
-    conjuntoFib.add(a);
-    conjuntoFib.add(b);
+const generarFibonacciConSet = (desde, hasta) => {
+    let primero = desde;
+    let segundo = desde + 1;
+    let lista = [primero, segundo];
 
     while (true) {
-        let siguiente = a + b;
+        let siguiente = primero + segundo;
         if (siguiente > hasta) break;
-        conjuntoFib.add(siguiente);
-        a = b;
-        b = siguiente;
+        lista.push(siguiente);
+        primero = segundo;
+        segundo = siguiente;
     }
 
-    return conjuntoFib;
+    return new Set(lista);
 };
 
-console.log(generarFibonacciSet(inicio, limite));
+console.log(generarFibonacciConSet(inicio, limite));
